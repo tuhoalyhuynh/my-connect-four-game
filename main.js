@@ -8,27 +8,31 @@ game.height = parseInt(height);
 
 const ctx = game.getContext('2d');
 
+let gameCounter = 1;
+
+let canvasElem = document.querySelector("canvas"); 
+
+let gameMessage = document.querySelector("#game-message")
+
 class Column {
     constructor (x) {
-        this.spaceZero = null
-        this.spaceOne = null
-        this.spaceTwo = null
-        this.spaceThree = null
-        this.spaceFour = null
-        this.spaceFive = null
+        this.spaceZero = ""
+        this.spaceOne = ""
+        this.spaceTwo = ""
+        this.spaceThree = ""
+        this.spaceFour = ""
+        this.spaceFive = ""
         this.x = x
-    }
-}
+    }    
+}    
 
-const columnOne = new Column (50);
-const columnTwo = new Column (160);
-const columnThree = new Column (270);
-const columnFour = new Column (380);
-const columnFive = new Column (490);
-const columnSix = new Column (600);
-const columnSeven = new Column (710);
-
-let gameCounter = 1;
+let columnOne = new Column (50);
+let columnTwo = new Column (160);
+let columnThree = new Column (270);
+let columnFour = new Column (380);
+let columnFive = new Column (490);
+let columnSix = new Column (600);
+let columnSeven = new Column (710);
 
 function renderGrey (x, y) {
     ctx.beginPath();
@@ -39,38 +43,75 @@ function renderGrey (x, y) {
     ctx.stroke();
 }
 
-function renderGamePiece (x, y, columnSpace) {
+function renderGamePiece (x, y) {
     if (gameCounter % 2 === 0) {
         ctx.beginPath();
         ctx.fillStyle = "rgb(111, 12, 32)"
         ctx.arc(x, y, 45, 0, 2 * Math.PI);
         ctx.fill();
-        columnSpace = "red";
         gameCounter++
     } else {
         ctx.beginPath();
         ctx.fillStyle = "black"
         ctx.arc(x, y, 45, 0, 2 * Math.PI);
         ctx.fill();
-        columnSpace = "black";
         gameCounter++
     }
+    console.log(gameCounter);
 }
 
 function yValue (column) {
-    if (column.spaceZero === null) {
-        renderGamePiece (column.x, 550, column.spaceZero);
-    } else if (column.spaceOne === null) {
-        renderGamePiece (column.x, 450, column.spaceOne);
-    } else if (column.spaceTwo === null) {
-        renderGamePiece (column.x, 350, column.spaceTwo);
-    } else if (column.spaceThree === null) {
-        renderGamePiece (column.x, 250, column.spaceThree);
-    } else if (column.spaceFour === null) {
-        renderGamePiece (column.x, 150, column.spaceFour);
-    } else if (column.spaceFive === null) {
-        renderGamePiece (column.x, 50, column.spaceFive);
-    } 
+    if (column.spaceZero === "") {
+        renderGamePiece (column.x, 550);
+        if (gameCounter % 2 === 0) {
+            column.spaceZero = "red"
+        } else {
+            column.spaceZero = "black"
+        }
+    } else if (column.spaceOne === "") {
+        renderGamePiece (column.x, 450);
+        if (gameCounter % 2 === 0) {
+            column.spaceOne = "red"
+        } else {
+            column.spaceOne = "black"
+        }
+    } else if (column.spaceTwo === "") {
+        renderGamePiece (column.x, 350);
+        if (gameCounter % 2 === 0) {
+            column.spaceTwo = "red"
+        } else {
+            column.spaceTwo = "black"
+        }
+    } else if (column.spaceThree === "") {
+        renderGamePiece (column.x, 250);
+        if (gameCounter % 2 === 0) {
+            column.spaceThree = "red"
+        } else {
+            column.spaceThree = "black"
+        }
+    } else if (column.spaceFour === "") {
+        renderGamePiece (column.x, 150);
+        if (gameCounter % 2 === 0) {
+            column.spaceFour = "red"
+        } else {
+            column.spaceFour = "black"
+        }
+    } else if (column.spaceFive === "") {
+        renderGamePiece (column.x, 50);
+        if (gameCounter % 2 === 0) {
+            column.spaceFive = "red"
+        } else {
+            column.spaceFive = "black"
+        }
+    } else if (columnFive !== "") {
+        gameMessage.innerText = "Please select a different column"
+    }
+}
+
+function drawCondition () {
+    if (gameCounter === 43) {
+        gameMessage.innerText = "It's a Draw!"
+    }
 }
 
 // function renderBlack (x, y) {
@@ -123,11 +164,11 @@ function getMousePosition(canvas, event) {
         yValue (columnSeven);
     }
 } 
-
-let canvasElem = document.querySelector("canvas"); 
   
 canvasElem.addEventListener("mousedown", function(e) { 
     let x =
     getMousePosition(canvasElem, e);
 
 }); 
+
+setInterval(drawCondition, 500);
