@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CONNECT FOUR</title>
+</head>
+<body>
+    <div id="container">
+        <aside id="title"><h2>CONNECT FOUR</h2></aside>
+        <aside id="instructions"><h2>Player(s) take turns placing game pieces. Select a column to place a game piece. Columns will fill from the bottom up. Once a player is able to to connect four pieces horizontally, veritcally, or diagonally; that player wins and the game is over. The game is a draw and over if neither player is able to connect four pieces before the board is filled.</h2></aside>
+        <main>
+            <canvas id="game">
+                <div id="column-1"></div>
+                <div id="column-2"></div>
+                <div id="column-3"></div>
+                <div id="column-4"></div>
+                <div id="column-5"></div>
+                <div id="column-6"></div>
+                <div id="column-7"></div>
+            </canvas>
+        </main>
+        <aside id="message"><h2></h2></aside>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
