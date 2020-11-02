@@ -23,3 +23,7 @@ Add base HTML for game and some basic CSS styling for game UI. HTML will incorpo
 Add some core game functionality JS. Built out initial game state using Canvas.
 
 ![Connect Four Initial State](imgs/connect-four-initial.jpg)
+
+### v0.03
+
+Add 'event listeners' to canvas for placing game pieces. Add logic to determine x- and y-positions for game piece placement. Add logic to identify where each piece is placed. Add draw condition.
