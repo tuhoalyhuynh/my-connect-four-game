@@ -18,3 +18,8 @@ The above image shows what the general layout of the game will look like. The ga
 
 Add base HTML for game and some basic CSS styling for game UI. HTML will incorporate Canvas. Basic CSS styling includes building out UI in grid format.
 
+### v0.02
+
+Add some core game functionality JS. Built out initial game state using Canvas.
+
+![Connect Four Initial State](imgs/connect-four-initial.jpg)
