@@ -27,3 +27,7 @@ Add some core game functionality JS. Built out initial game state using Canvas.
 ### v0.03
 
 Add 'event listeners' to canvas for placing game pieces. Add logic to determine x- and y-positions for game piece placement. Add logic to identify where each piece is placed. Add draw condition.
+
+### v0.04
+
+Add Game Message Disply to display player turns, draw, and winner. Add win conditions for game. Reorganized file structure, moved win conditions to separate file to de-clutter main.js.
