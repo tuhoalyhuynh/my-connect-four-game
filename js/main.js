@@ -5,14 +5,14 @@ const height = computedStyle.height;
 const width = computedStyle.width;
 game.width = parseInt(width);
 game.height = parseInt(height);
-
 const ctx = game.getContext('2d');
 
-let gameCounter = 1;
-
 let canvasElem = document.querySelector("canvas"); 
-
 let gameMessage = document.querySelector("#game-message")
+
+let gameCounter = 1;
+let playerOne = ["black", "Player One"]
+let playerTwo = ["red", "Player Two"]
 
 class Column {
     constructor (x) {
@@ -57,55 +57,55 @@ function renderGamePiece (x, y) {
         ctx.fill();
         gameCounter++
     }
-    console.log(gameCounter);
 }
 
 function yValue (column) {
     if (column.spaceZero === "") {
         renderGamePiece (column.x, 550);
         if (gameCounter % 2 === 0) {
-            column.spaceZero = "red"
-        } else {
             column.spaceZero = "black"
+        } else {
+            column.spaceZero = "red"
         }
     } else if (column.spaceOne === "") {
         renderGamePiece (column.x, 450);
         if (gameCounter % 2 === 0) {
-            column.spaceOne = "red"
-        } else {
             column.spaceOne = "black"
+        } else {
+            column.spaceOne = "red"
         }
     } else if (column.spaceTwo === "") {
         renderGamePiece (column.x, 350);
         if (gameCounter % 2 === 0) {
-            column.spaceTwo = "red"
-        } else {
             column.spaceTwo = "black"
+        } else {
+            column.spaceTwo = "red"
         }
     } else if (column.spaceThree === "") {
         renderGamePiece (column.x, 250);
         if (gameCounter % 2 === 0) {
-            column.spaceThree = "red"
-        } else {
             column.spaceThree = "black"
+        } else {
+            column.spaceThree = "red"
         }
     } else if (column.spaceFour === "") {
         renderGamePiece (column.x, 150);
         if (gameCounter % 2 === 0) {
-            column.spaceFour = "red"
-        } else {
             column.spaceFour = "black"
+        } else {
+            column.spaceFour = "red"
         }
     } else if (column.spaceFive === "") {
         renderGamePiece (column.x, 50);
         if (gameCounter % 2 === 0) {
-            column.spaceFive = "red"
-        } else {
             column.spaceFive = "black"
+        } else {
+            column.spaceFive = "red"
         }
     } else if (columnFive !== "") {
         gameMessage.innerText = "Please select a different column"
     }
+    setTimeout (playerTurn, 250)
 }
 
 function drawCondition () {
@@ -114,16 +114,23 @@ function drawCondition () {
     }
 }
 
-// function renderBlack (x, y) {
-//     ctx.beginPath();
-//     ctx.fillStyle = "black"
-//     ctx.arc(x, y, 45, 0, 2 * Math.PI);
-//     ctx.fill();
-// }
+function gameCondition () {
+    drawCondition ();
+    redWinCondition ();
+    blackWinCondition ();
+}
 
 function renderBorder (x) {
     ctx.fillStyle = 'rgb(15, 15, 83)'
     ctx.fillRect(x, 0, 10, 600);
+}
+
+function playerTurn () {
+    if (gameCounter % 2 === 0) {
+        gameMessage.innerText = `${playerTwo[1]}'s Turn`
+    } else {
+        gameMessage.innerText = `${playerOne[1]}'s Turn`
+    }
 }
 
 function initialState () {
@@ -141,6 +148,7 @@ function initialState () {
         renderBorder (z);
         z += 110;
     }
+    playerTurn();
 }
 
 initialState();
@@ -168,7 +176,6 @@ function getMousePosition(canvas, event) {
 canvasElem.addEventListener("mousedown", function(e) { 
     let x =
     getMousePosition(canvasElem, e);
+})
 
-}); 
-
-setInterval(drawCondition, 500);
+setInterval(gameCondition, 500)
