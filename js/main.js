@@ -10,7 +10,11 @@ const ctx = game.getContext('2d');
 let canvasElem = document.querySelector("canvas"); 
 let gameMessage = document.querySelector("#game-message")
 
-let isLive = true;
+const startScreen = document.querySelector("#start")
+const resetButton = document.querySelector("#reset")
+const twoPlayerButton = document.querySelector("#twoPlayer")
+
+let isLive = false;
 let gameCounter = 1;
 let playerOne = ["black", "Player One"]
 let playerTwo = ["red", "Player Two"]
@@ -170,8 +174,6 @@ function initialState () {
     isLive = true;
 }
 
-initialState();
-
 function getMousePosition(canvas, event) { 
     if (isLive) {
         let rect = canvas.getBoundingClientRect(); 
@@ -199,7 +201,15 @@ canvasElem.addEventListener("mousedown", function(e) {
     getMousePosition(canvasElem, e);
 })
 
-const resetButton = document.querySelector("#reset")
-resetButton.addEventListener("click", initialState)
+resetButton.addEventListener("click", function () {
+    ctx.clearRect(0, 0, game.width, game.height);
+    isLive = false;
+    startScreen.classList.remove("invisible")
+})
+
+twoPlayerButton.addEventListener("click", function () {
+    startScreen.classList.add("invisible")
+    initialState ();
+})
 
 setInterval(gameCondition, 500)

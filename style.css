@@ -2,6 +2,33 @@ body {
     background-color: lightslategrey;
 }
 
+#start {
+    display: block;
+    position: absolute;
+    top: 300px;
+    background-color: #c6ca90;
+    border: 25px solid rgb(15, 15, 83);
+    font-size: 75px;
+    text-align: center;
+    z-index: 3;
+    width: 1200px;
+    height: 400px;
+}
+
+.start {
+    position: relative;
+    top: -50px;
+}
+
+#twoPlayer {
+    position: relative;
+    border: 25px solid rgb(15, 15, 83);
+    width: 400px;
+    height: 100px;
+    left: 350px;
+    top: -100px;
+}
+
 #container {
     width: 1100px;
     height: 1000px;
@@ -77,4 +104,8 @@ canvas {
     grid-area: message;
     border: 10px solid rgb(15, 15, 83);
     color: rgb(141, 8, 8);
+}
+
+.invisible {
+    visibility: hidden;
 }

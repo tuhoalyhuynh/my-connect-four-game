@@ -7,9 +7,14 @@
     <title>CONNECT FOUR</title>
 </head>
 <body>
+    <div id="start">
+        <p class="start">Play Connect Four. Click 'Start Game' to begin.</p>
+        <p class="start" id="twoPlayer">Start Game</p>
+    </div>
+    
     <div id="container">
         <aside id="title"><h2>CONNECT FOUR</h2></aside>
-        <aside id="instructions"><h2 id="instructionsText">Player(s) take turns placing game pieces. Select a column to place a game piece. Columns will fill from the bottom up. Once a player is able to to connect four pieces horizontally, veritcally, or diagonally; that player wins and the game is over. The game is a draw and over if neither player is able to connect four pieces before the board is filled.</h2><div id="reset">RESET GAME</div>
+        <aside id="instructions"><h2 id="instructionsText">Player(s) take turns placing game pieces. Select a column to place a game piece. Columns will fill from the bottom up. Once a player is able to to connect four pieces horizontally, veritcally, or diagonally; that player wins and the game is over. The game is a draw and over if neither player is able to connect four pieces before the board is filled.</h2><p id="reset">RESET GAME</p>
         </aside>
         <main>
             <canvas id="game">
