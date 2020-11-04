@@ -42,6 +42,24 @@ body {
     grid-area: instructions;
     border-right: 10px solid rgb(15, 15, 83);
     border-left: 10px solid rgb(15, 15, 83);
+    text-align: center;
+}
+
+#instructionsText {
+    position: relative;
+    left: 35px;
+    top: -25px;
+}
+
+#reset {
+    position: relative;
+    width: 150px;
+    height: 30px;
+    left: -150px;
+    top: 275px;
+    padding: 5px;
+    border: 5px solid rgb(15, 15, 83);
+    color: rgb(141, 8, 8);
 }
 
 main {

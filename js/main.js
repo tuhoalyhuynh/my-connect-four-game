@@ -10,6 +10,7 @@ const ctx = game.getContext('2d');
 let canvasElem = document.querySelector("canvas"); 
 let gameMessage = document.querySelector("#game-message")
 
+let isLive = true;
 let gameCounter = 1;
 let playerOne = ["black", "Player One"]
 let playerTwo = ["red", "Player Two"]
@@ -33,6 +34,19 @@ let columnFour = new Column (380);
 let columnFive = new Column (490);
 let columnSix = new Column (600);
 let columnSeven = new Column (710);
+
+let columnArray = [columnOne, columnTwo, columnThree, columnFour, columnFive, columnSix, columnSeven]
+
+function columnReset (array) {
+    for (let i = 0; i < array.length; i++) {
+        array[i].spaceZero = "";
+        array[i].spaceOne = "";
+        array[i].spaceTwo = "";
+        array[i].spaceThree = "";
+        array[i].spaceFour = "";
+        array[i].spaceFive = "";
+    }
+}
 
 function renderGrey (x, y) {
     ctx.beginPath();
@@ -108,9 +122,11 @@ function yValue (column) {
     setTimeout (playerTurn, 250)
 }
 
+
 function drawCondition () {
     if (gameCounter === 43) {
-        gameMessage.innerText = "It's a Draw!"
+        gameMessage.innerText = "It's a Draw!";
+        isLive = false;
     }
 }
 
@@ -134,6 +150,7 @@ function playerTurn () {
 }
 
 function initialState () {
+    gameCounter = 1
     var x = 50;
     for (let a = 0; a < 7; a++) {
         var y = 50;
@@ -149,27 +166,31 @@ function initialState () {
         z += 110;
     }
     playerTurn();
+    columnReset(columnArray);
+    isLive = true;
 }
 
 initialState();
 
 function getMousePosition(canvas, event) { 
-    let rect = canvas.getBoundingClientRect(); 
-    let x = event.clientX - rect.left; 
-    if (x > 0 && x < 100) {
-        yValue (columnOne);
-    } else if (x > 110 && x < 210) {
-        yValue (columnTwo);
-    } else if (x > 220 && x < 320) {
-        yValue (columnThree);
-    } else if (x > 330 && x < 430) {
-        yValue (columnFour);
-    } else if (x > 440 && x < 540) {
-        yValue (columnFive);
-    } else if (x > 550 && x < 650) {
-        yValue (columnSix);
-    } else if (x > 660 && x < 760) {
-        yValue (columnSeven);
+    if (isLive) {
+        let rect = canvas.getBoundingClientRect(); 
+        let x = event.clientX - rect.left; 
+        if (x > 0 && x < 100) {
+            yValue (columnOne);
+        } else if (x > 110 && x < 210) {
+            yValue (columnTwo);
+        } else if (x > 220 && x < 320) {
+            yValue (columnThree);
+        } else if (x > 330 && x < 430) {
+            yValue (columnFour);
+        } else if (x > 440 && x < 540) {
+            yValue (columnFive);
+        } else if (x > 550 && x < 650) {
+            yValue (columnSix);
+        } else if (x > 660 && x < 760) {
+            yValue (columnSeven);
+        }
     }
 } 
   
@@ -177,5 +198,8 @@ canvasElem.addEventListener("mousedown", function(e) {
     let x =
     getMousePosition(canvasElem, e);
 })
+
+const resetButton = document.querySelector("#reset")
+resetButton.addEventListener("click", initialState)
 
 setInterval(gameCondition, 500)
