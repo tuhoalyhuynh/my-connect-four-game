@@ -31,3 +31,7 @@ Add 'event listeners' to canvas for placing game pieces. Add logic to determine 
 ### v0.04
 
 Add Game Message Disply to display player turns, draw, and winner. Add win conditions for game. Reorganized file structure, moved win conditions to separate file to de-clutter main.js.
+
+### v0.05
+
+Add Reset Button to reset game. Added functionality to not allow players to place game pieces once win/draw condtions are met.
