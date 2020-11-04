@@ -13,11 +13,15 @@ let gameMessage = document.querySelector("#game-message")
 const startScreen = document.querySelector("#start")
 const resetButton = document.querySelector("#reset")
 const twoPlayerButton = document.querySelector("#twoPlayer")
+const onePlayerBlackButton = document.querySelector("#onePlayerBlack")
+const onePlayerRedButton = document.querySelector("#onePlayerRed")
 
 let isLive = false;
 let gameCounter = 1;
 let playerOne = ["black", "Player One"]
 let playerTwo = ["red", "Player Two"]
+let onePlayerBlack = false;
+let onePlayerRed = false;
 
 class Column {
     constructor (x) {
@@ -126,6 +130,18 @@ function yValue (column) {
     setTimeout (playerTurn, 250)
 }
 
+function randomColumn (column) {
+    let i = Math.floor(Math.random() * 6)
+    return column[i]
+}
+
+function onePlayerMode () {
+    if (onePlayerRed && gameCounter % 2 !== 0) {
+        yValue(randomColumn(columnArray));
+    } else if (onePlayerBlack && gameCounter % 2 === 0) {
+        yValue(randomColumn(columnArray))
+    }
+}
 
 function drawCondition () {
     if (gameCounter === 43) {
@@ -138,6 +154,7 @@ function gameCondition () {
     drawCondition ();
     redWinCondition ();
     blackWinCondition ();
+    setTimeout(onePlayerMode, 250)
 }
 
 function renderBorder (x) {
@@ -172,6 +189,10 @@ function initialState () {
     playerTurn();
     columnReset(columnArray);
     isLive = true;
+    onePlayerBlack = false;
+    onePlayerRed = false;
+    playerOne = []
+    playerTwo = []
 }
 
 function getMousePosition(canvas, event) { 
@@ -210,6 +231,24 @@ resetButton.addEventListener("click", function () {
 twoPlayerButton.addEventListener("click", function () {
     startScreen.classList.add("invisible")
     initialState ();
+    playerOne = ["black", "Player One"]
+    playerTwo = ["red", "Player Two"]
 })
 
-setInterval(gameCondition, 500)
+onePlayerBlackButton.addEventListener("click", function () {
+    startScreen.classList.add("invisible")
+    initialState ();
+    onePlayerBlack = true;
+    playerOne = ["black", "Player"]
+    playerTwo = ["red", "Computer"]
+})
+
+onePlayerRedButton.addEventListener("click", function () {
+    startScreen.classList.add("invisible")
+    initialState ();
+    onePlayerRed = true;
+    playerOne = ["black", "Computer"]
+    playerTwo = ["red", "Player"]
+})
+
+setInterval(gameCondition, 200)

@@ -20,13 +20,10 @@ body {
     top: -50px;
 }
 
-#twoPlayer {
+.playerSelect {
     position: relative;
+    top: -50px;
     border: 25px solid rgb(15, 15, 83);
-    width: 400px;
-    height: 100px;
-    left: 350px;
-    top: -100px;
 }
 
 #container {
