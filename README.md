@@ -39,3 +39,7 @@ Add Reset Button to reset game. Added functionality to not allow players to plac
 ### v1.01
 
 Add Start Screen. Game unplayable until game started. Screen disappears once game is started. On reset, start screen reappears and game is unplayable until started.
+
+### v1.02
+
+Add Single Player Mode. Player plays against "AI". The computer randomly chooses a column to place game piece. Additional coding for Game Message to display "Player/Computer" in Single and "Player One/Player Two" in Two Player mode.
