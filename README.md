@@ -43,3 +43,9 @@ Add Start Screen. Game unplayable until game started. Screen disappears once gam
 ### v1.02
 
 Add Single Player Mode. Player plays against "AI". The computer randomly chooses a column to place game piece. Additional coding for Game Message to display "Player/Computer" in Single and "Player One/Player Two" in Two Player mode.
+
+### v1.03
+
+Add additional styling to UI.
+
+![Connect Four Final State](imgs/connect-four-final.jpg)
