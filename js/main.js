@@ -164,8 +164,10 @@ function renderBorder (x) {
 
 function playerTurn () {
     if (gameCounter % 2 === 0) {
+        gameMessage.style.color = "rgb(111, 12, 32)"
         gameMessage.innerText = `${playerTwo[1]}'s Turn`
     } else {
+        gameMessage.style.color = "black"
         gameMessage.innerText = `${playerOne[1]}'s Turn`
     }
 }

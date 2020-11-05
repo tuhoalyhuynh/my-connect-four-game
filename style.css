@@ -1,5 +1,6 @@
 body {
     background-color: lightslategrey;
+    font-family: 'Righteous', cursive;
 }
 
 #start {
@@ -7,7 +8,7 @@ body {
     position: absolute;
     top: 300px;
     background-color: #c6ca90;
-    border: 25px solid rgb(15, 15, 83);
+    border: 20px solid rgb(15, 15, 83);
     font-size: 75px;
     text-align: center;
     z-index: 3;
@@ -18,12 +19,18 @@ body {
 .start {
     position: relative;
     top: -50px;
+    border-radius: 10%;
 }
 
 .playerSelect {
     position: relative;
     top: -50px;
-    border: 25px solid rgb(15, 15, 83);
+    border: 15px solid rgb(15, 15, 83);
+}
+
+.playerSelect:hover {
+    border: 20px solid rgb(15, 15, 83);
+    cursor: pointer;
 }
 
 #container {
@@ -71,19 +78,25 @@ body {
 
 #instructionsText {
     position: relative;
-    left: 35px;
-    top: -25px;
+    left: 45px;
+    top: -50px;
+    font-size: 20px;
 }
 
 #reset {
     position: relative;
-    width: 150px;
-    height: 30px;
-    left: -150px;
-    top: 275px;
+    top: 235px;
+    left: -100px;
+    width: 200px;
     padding: 5px;
+    font-size: 25px;
     border: 5px solid rgb(15, 15, 83);
     color: rgb(141, 8, 8);
+}
+
+#reset:hover{
+    cursor: pointer;
+    color: black;
 }
 
 main {
@@ -100,7 +113,8 @@ canvas {
 #message {
     grid-area: message;
     border: 10px solid rgb(15, 15, 83);
-    color: rgb(141, 8, 8);
+    color: black;
+    font-size: 50px;
 }
 
 .invisible {

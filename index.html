@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>CONNECT FOUR</title>
 </head>
 <body>
     <div id="start">
-        <p class="start">Play Connect Four. Click 'Start Game' to begin.</p>
+        <p class="start">Play Connect Four. Select '1PB', '1PR', or '2P' to begin.</p>
         <span class="start playerSelect" id="onePlayerBlack">1PB</span>
         <span class="start playerSelect" id="onePlayerRed" style="color: rgb(111, 12, 32)">1PR</span>
         <span class="start playerSelect" id="twoPlayer">2P</span>
@@ -16,7 +17,9 @@
     
     <div id="container">
         <aside id="title"><h2>CONNECT FOUR</h2></aside>
-        <aside id="instructions"><h2 id="instructionsText">Player(s) take turns placing game pieces. Select a column to place a game piece. Columns will fill from the bottom up. Once a player is able to to connect four pieces horizontally, veritcally, or diagonally; that player wins and the game is over. The game is a draw and over if neither player is able to connect four pieces before the board is filled.</h2><p id="reset">RESET GAME</p>
+        <aside id="instructions">
+            <p id="instructionsText">Player(s) take turns placing game pieces. Select a column to place a game piece. Columns will fill from the bottom up. Once a player is able to to connect four pieces horizontally, veritcally, or diagonally; that player wins and the game is over. The game is a draw and over if neither player is able to connect four pieces before the board is filled.</p>
+            <span id="reset">RESET GAME</span>
         </aside>
         <main>
             <canvas id="game">
