@@ -18,8 +18,8 @@ const onePlayerRedButton = document.querySelector("#onePlayerRed")
 
 let isLive = false;
 let gameCounter = 1;
-let playerOne = ["black", "Player One"]
-let playerTwo = ["red", "Player Two"]
+let playerOne = ["black", "Player One", "black"]
+let playerTwo = ["red", "Player Two", "rgb(111, 12, 32)"]
 let onePlayerBlack = false;
 let onePlayerRed = false;
 
@@ -150,11 +150,17 @@ function drawCondition () {
     }
 }
 
+function winStatus (array) {
+    gameMessage.style.color = array[2];
+    gameMessage.innerText = `${array[1]} is the Winner`;
+    isLive = false;
+}
+
 function gameCondition () {
     drawCondition ();
-    redWinCondition ();
-    blackWinCondition ();
-    setTimeout(onePlayerMode, 250)
+    winCondition (playerOne);
+    winCondition (playerTwo);
+    setTimeout(onePlayerMode, 250);
 }
 
 function renderBorder (x) {
@@ -164,10 +170,10 @@ function renderBorder (x) {
 
 function playerTurn () {
     if (gameCounter % 2 === 0) {
-        gameMessage.style.color = "rgb(111, 12, 32)"
+        gameMessage.style.color = playerTwo[2]
         gameMessage.innerText = `${playerTwo[1]}'s Turn`
     } else {
-        gameMessage.style.color = "black"
+        gameMessage.style.color = playerOne[2]
         gameMessage.innerText = `${playerOne[1]}'s Turn`
     }
 }
@@ -233,24 +239,24 @@ resetButton.addEventListener("click", function () {
 twoPlayerButton.addEventListener("click", function () {
     startScreen.classList.add("invisible")
     initialState ();
-    playerOne = ["black", "Player One"]
-    playerTwo = ["red", "Player Two"]
+    playerOne = ["black", "Player One", "black"]
+    playerTwo = ["red", "Player Two", "rgb(111, 12, 32)"]
 })
 
 onePlayerBlackButton.addEventListener("click", function () {
     startScreen.classList.add("invisible")
     initialState ();
     onePlayerBlack = true;
-    playerOne = ["black", "Player"]
-    playerTwo = ["red", "Computer"]
+    playerOne = ["black", "Player", "black"]
+    playerTwo = ["red", "Computer", "rgb(111, 12, 32)"]
 })
 
 onePlayerRedButton.addEventListener("click", function () {
     startScreen.classList.add("invisible")
     initialState ();
     onePlayerRed = true;
-    playerOne = ["black", "Computer"]
-    playerTwo = ["red", "Player"]
+    playerOne = ["black", "Computer", "black"]
+    playerTwo = ["red", "Player", "rgb(111, 12, 32)"]
 })
 
 setInterval(gameCondition, 200)
